@@ -203,11 +203,11 @@ namespace Json.Analysis
         /// <returns>字符串值</returns>
         private static string ReadString(string text, ref int index)
         {
-            //是否处于转义状态
             var value = new StringBuilder();
             while (index < text.Length)
             {
                 var c = text[index++];
+                //判断是否是转义字符
                 if (c == '\\')
                 {
                     value.Append('\\');
@@ -253,7 +253,7 @@ namespace Json.Analysis
         /// </summary>
         private static bool IsHex(char c)
         {
-            return c >= '0' && c <= '9' || c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
+            return c >= '0' && c <= '9' || c >= 'a' && c <= 'f' || c >= 'A' && c <= 'F';
         }
 
         /// <summary>
